@@ -22,8 +22,8 @@ componentWillMount(){
 render() {
     return (
       <View>
-        <Header headerText="Authentication" />
-        <LoginForm />
+        <Header headerText="Authentication"/>
+        <LoginForm/>
       </View>
     );
   }

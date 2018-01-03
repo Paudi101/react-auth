@@ -7,16 +7,12 @@ class LoginForm extends Component {
     return (
       <Card>
         <CardSection>
-          //By defualt do not have an exact height and width
-          <TextInput/>
+          <TextInput style={{height:40,width:100}}/>
         </CardSection>
-
         <CardSection/>
-
         <CardSection>
-          <Button>Login</Button>
+          <Button>Log</Button>
         </CardSection>
-
       </Card>
     );
   }
