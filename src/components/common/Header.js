@@ -32,4 +32,4 @@ const styles = {
 
 //Make component abailable from other parts of my app
 //We export to allow other files to be able to use it
-export default Header;
+export { Header };
