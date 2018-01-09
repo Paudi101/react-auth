@@ -8,7 +8,7 @@ import LoginForm from './components/LoginForm';
 class App extends Component {
   state = { loggedIn: null }
 //Lifecycle method, once defined it will automatically be called.
-componentWillMount(){
+componentWillMount() {
   firebase.initializeApp({
     apiKey: 'AIzaSyAd2_QV-o18Z0n3MhfPlYcYtyKNnKTrILQ',
     authDomain: 'auth-c22dc.firebaseapp.com',
