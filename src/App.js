@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View } from 'react-native'
 //No need to specify the index file, will go automatically to it
-import { Header } from './components/common';
+import { Header, Button, CardSection, Spinner } from './components/common';
 import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
 
-
 class App extends Component {
+  state = { loggedIn: null }
 //Lifecycle method, once defined it will automatically be called.
 componentWillMount(){
   firebase.initializeApp({
@@ -17,15 +17,43 @@ componentWillMount(){
     storageBucket: 'auth-c22dc.appspot.com',
     messagingSenderId: '68540481901'
   });
+
+  // If logged in set logged in to true else false
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      this.setState({ loggedIn: true });
+    } else {
+      this.setState({ loggedIn: false })
+    }
+  });
+}
+
+renderContent() {
+  switch (this.state.loggedIn){
+    case true:
+      return (<CardSection><Button onPress={() => firebase.auth().signOut()}>Log Out</Button></CardSection>);
+    case false:
+      return <LoginForm />;
+    default:
+      return (<View style={styles.centered}><Spinner size="large" /></View>)
+  }
 }
 
 render() {
     return (
       <View>
         <Header headerText="Authentication"/>
-        <LoginForm/>
+        {this.renderContent()}
       </View>
     );
+  }
+}
+
+const styles = {
+  centered:{
+    marginTop: '50%',
+    alignItems: 'center',
+    flex: 1
   }
 }
 
