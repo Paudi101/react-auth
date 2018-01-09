@@ -18,7 +18,7 @@ componentWillMount(){
     messagingSenderId: '68540481901'
   });
 
-  // If logged in set logged in to true else false
+  // If logged in set logged in to true else false triggered when state changes
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       this.setState({ loggedIn: true });
